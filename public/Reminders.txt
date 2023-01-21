@@ -1,0 +1,4 @@
+För responsivitet, gör antingen MobileView, desktopView etc eller gör
+allt i PortfolioSite componentet o rendera med mobileView ? <blablabla>
+
+Kolla hur man fixar med fonter för styled components

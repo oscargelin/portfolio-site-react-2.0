@@ -2,15 +2,17 @@ import styled from "styled-components";
 import Colors from "../../constants/Colors";
 
 type ContainerType = {
-  height: string;
+  height?: string;
+  width?: string;
 };
 
 const Container = styled.div<ContainerType>`
   height: ${(props) => props.height};
-  width: 100%;
+  width: ${(props) => props.width};
   background-color: ${Colors.cream};
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin: 5vh 5vw;
+  border-radius: 6px;
+  box-shadow: 0px 0px 4px black;
 `;
 
 export default Container;
