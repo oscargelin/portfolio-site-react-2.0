@@ -1,10 +1,16 @@
 import styled from "styled-components";
-import Colors from "../../constants/Colors";
+import colors from "../../constants/colors";
 
-const Wrapper = styled.div`
-  background: ${Colors.gradientGreen};
+type Props = {
+  backgroundColor: string;
+};
+
+const Wrapper = styled.div<Props>`
+  background: ${(props) => props.backgroundColor};
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  transition: all ease-in-out 2s;
 `;
 
 export default Wrapper;

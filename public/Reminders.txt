@@ -2,3 +2,11 @@ För responsivitet, gör antingen MobileView, desktopView etc eller gör
 allt i PortfolioSite componentet o rendera med mobileView ? <blablabla>
 
 Kolla hur man fixar med fonter för styled components
+
+Alla state och funktionaliteten funktioner o villkor för vad som ska visas 
+under "hire oscar" sektionen kan göras bättre o snyggare.
+
+Måste fixa translateX på nåt sätt, nu när man trycker på gula window knappen så ser det bra ut, men problemet är att fönstret fortfarande finns kvar på sidan.
+Så man kan scrolla sidleds osv, måste kunna hitta nåt sätt att lösa detta.
+Min tanke på detta är att sätta ett state efter transition tiden som om true gör display: none. kanske funkar? krävs en timer.
+

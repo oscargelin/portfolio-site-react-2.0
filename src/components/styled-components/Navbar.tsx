@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import Colors from "../../constants/Colors";
+import colors from "../../constants/colors";
 import { Fonts } from "../../constants/Fonts";
 
-const Navbar = styled.nav`
-  display: flex;
-  align-items: center;
-  color: #2f4f4f;
-  font-size: 22px;
-  font-family: ${Fonts.russoOne};
+type Props = {
+  backgroundColor?: string;
+};
+
+const Navbar = styled.nav<Props>`
+  color: ${colors.cream};
+  font-family: ${Fonts.audioWide};
   font-weight: bold;
-  height: 80px;
+  background: ${(props) => props.backgroundColor};
 `;
 export default Navbar;
