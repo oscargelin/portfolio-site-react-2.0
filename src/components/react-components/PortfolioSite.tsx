@@ -16,6 +16,7 @@ import LinkItem from "../styled-components/LinkItem";
 import ColorPickerBox from "../styled-components/ColorPickerBox";
 import MaximizeWindow from "../styled-components/MaximizeWindow";
 import Card from "../styled-components/Card";
+import Typescript from "../styled-components/StyledIcons";
 const regexNumber = /^[0-9]+$/;
 
 const isMobile = true;
@@ -368,8 +369,9 @@ const PortfolioSite = () => {
             </Box>
           </Box>
           <Box>
-            <Card size="m" color={themeColor}>
+            <Card size="m" color={themeColor} backgroundColor={colors.cream}>
               <h4>Portfolio</h4>
+              <Typescript color="blue" size={30} />
             </Card>
           </Box>
         </Main>
