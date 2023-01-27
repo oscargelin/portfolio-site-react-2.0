@@ -4,6 +4,7 @@ const colors = {
   purple: "#1e0f4c",
   red: "#cc0037",
   grey: "#323330",
+  pink: "#c61164",
 
   redWindowBtn: "#ff605c",
   yellowWindowBtn: "#ffbd44",
@@ -18,7 +19,8 @@ const colors = {
   gradientGrey:
     "linear-gradient(90deg,rgba(84, 79, 79, 1) 0%,rgba(28, 27, 27, 1) 100%);",
 
-  gradientGitSpaceRainbow: "",
+  gradientTuttiFrutti:
+    "linear-gradient(118deg, rgba(198,17,100,1) 0%, rgba(45,2,162,1) 24%, rgba(3,32,136,1) 40%, rgba(3,67,50,1) 55%, rgba(176,137,0,1) 80%, rgba(211,25,73,1) 100%);",
 };
 
 export default colors;

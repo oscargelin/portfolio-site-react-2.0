@@ -278,6 +278,15 @@ const PortfolioSite = () => {
                     title="Gradient grey"
                     onClick={() => setTheme(colors.gradientGrey, colors.grey)}
                   ></ColorPickerBox>
+                  <ColorPickerBox
+                    height="20px"
+                    width="20px"
+                    backgroundColor={colors.gradientTuttiFrutti}
+                    title="Gradient Tuttifrutti"
+                    onClick={() =>
+                      setTheme(colors.gradientTuttiFrutti, colors.pink)
+                    }
+                  ></ColorPickerBox>
                 </Box>
               ) : null}
             </Navbar>
