@@ -1,2 +1,9 @@
 export { Typescript } from "@styled-icons/simple-icons/Typescript";
-export { LogoJavascript } from "@styled-icons/ionicons-solid/LogoJavascript";
+export { Git } from "@styled-icons/bootstrap/Git";
+export { Javascript } from "@styled-icons/boxicons-logos/Javascript";
+export { Html5 } from "@styled-icons/boxicons-logos/Html5";
+export { Css3 } from "@styled-icons/boxicons-logos/Css3";
+export { Sass } from "@styled-icons/boxicons-logos/Sass";
+export { ReactLogo } from "@styled-icons/boxicons-logos/ReactLogo";
+export { Github } from "@styled-icons/boxicons-logos/Github";
+export { Linkedin } from "@styled-icons/fa-brands/Linkedin";

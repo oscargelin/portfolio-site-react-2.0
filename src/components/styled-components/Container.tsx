@@ -8,11 +8,12 @@ type Props = {
   marginX: string;
   isWindowHidden: boolean;
   isWindowClosed: boolean;
+  backgroundColor: string;
 };
 
 const Container = styled.div<Props>`
   width: ${(props) => props.width};
-  background-color: ${colors.cream};
+  background-color: ${(props) => props.backgroundColor};
   margin-top: ${(props) => props.marginY};
   margin-bottom: ${(props) => props.marginY};
   margin-left: ${(props) => props.marginX};
@@ -28,6 +29,6 @@ const Container = styled.div<Props>`
         ? "5000px"
         : "0"}
   );
-  transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.3s;
 `;
 export default Container;

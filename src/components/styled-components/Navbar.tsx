@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "../../constants/colors";
-import { Fonts } from "../../constants/Fonts";
+import { Fonts } from "../../constants/fonts";
 
 type Props = {
   backgroundColor?: string;

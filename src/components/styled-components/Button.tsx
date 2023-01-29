@@ -18,5 +18,6 @@ const Button = styled.button<Props>`
     opacity: 0.9;
     text-shadow: 0px 0px 4px ${colors.cream};
   }
+  transition: all ease-in-out 0.2s;
 `;
 export default Button;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { Fonts } from "../../constants/Fonts";
+import { Fonts } from "../../constants/fonts";
 const StyledGlobal = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron&family=Russo+One&display=swap');
 

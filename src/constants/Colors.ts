@@ -5,10 +5,27 @@ const colors = {
   red: "#cc0037",
   grey: "#323330",
   pink: "#c61164",
+  blueThunder: "#091827",
 
   redWindowBtn: "#ff605c",
   yellowWindowBtn: "#ffbd44",
   greenWindowBtn: "#00ca4e",
+
+  reactColor: "#06bcee",
+  javascriptColor: "#f0db4f",
+  typescriptColor: "#007acc",
+  cssColor: "#276dc2;",
+  htmlColor: "#e34c26",
+  gitColor: "#f1502f",
+  sassColor: "#cd6799",
+  linkedinColor: "#0072b1",
+  githubIcon: "#171515",
+
+  const: "#df69dc",
+  variable: "#b0dceb",
+  string: "#85c36c",
+  bracket: "#ffd714",
+  semiColon: "#ffffff",
 
   gradientGreen:
     "linear-gradient(90deg,rgba(2, 0, 36, 1) 0%,rgba(9, 121, 92, 1) 100%);",

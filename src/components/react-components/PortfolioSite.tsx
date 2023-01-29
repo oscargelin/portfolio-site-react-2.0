@@ -14,9 +14,21 @@ import WindowButton from "../styled-components/WindowButton";
 import colors from "../../constants/colors";
 import LinkItem from "../styled-components/LinkItem";
 import ColorPickerBox from "../styled-components/ColorPickerBox";
-import MaximizeWindow from "../styled-components/MaximizeWindow";
 import Card from "../styled-components/Card";
-import Typescript from "../styled-components/StyledIcons";
+import { cardData } from "../../data/data";
+import {
+  TypescriptIcon,
+  JavaScriptIcon,
+  GitIcon,
+  CssIcon,
+  HtmlIcon,
+  GithubIcon,
+  LinkedinIcon,
+  ReactIcon,
+} from "../styled-components/StyledIcons";
+import NightMode from "../styled-components/NightMode";
+import LightMode from "../styled-components/LightMode";
+
 const regexNumber = /^[0-9]+$/;
 
 const isMobile = true;
@@ -31,7 +43,41 @@ const tempFour = " }}";
 
 const minSalaryLimit = 60000;
 
+type Person = {};
+
+// Öppna anteckningar
+const oscar: Person = {
+  name: "Oscar",
+  education: "Bachelors degree",
+  profession: "Front end developer",
+};
+
 const PortfolioSite = () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    localStorage.getItem("containerBackgroundColor") === colors.blueThunder
+      ? true
+      : false
+  );
+
+  const [containerBackgroundColor, setContainerBackgroundColor] =
+    useState<string>(
+      localStorage.getItem("containerBackgroundColor")
+        ? (localStorage.getItem("containerBackgroundColor") as string)
+        : colors.cream
+    );
+
+  const moonClicked = () => {
+    setIsDarkMode(true);
+    setContainerBackgroundColor(colors.blueThunder);
+    localStorage.setItem("containerBackgroundColor", colors.blueThunder);
+  };
+
+  const sunClicked = () => {
+    setIsDarkMode(false);
+    setContainerBackgroundColor(colors.cream);
+    localStorage.setItem("containerBackgroundColor", colors.cream);
+  };
+
   const [themeBackgroundColor, setThemeBackgroundColor] = useState<string>(
     localStorage.getItem("themeBackgroundColor")
       ? (localStorage.getItem("themeBackgroundColor") as string)
@@ -66,10 +112,12 @@ const PortfolioSite = () => {
   const [isInputBiggerThanZero, setIsInputBiggerThanZero] = useState(false);
 
   const setTheme = (themeBackgroundColor: string, themeColor: string): void => {
+    console.log("Before", localStorage.getItem("containerBackgroundColor"));
     localStorage.setItem("themeBackgroundColor", themeBackgroundColor);
     setThemeBackgroundColor(themeBackgroundColor);
     localStorage.setItem("themeColor", themeColor);
     setThemeColor(themeColor);
+    console.log("after", localStorage.getItem("containerBackgroundColor"));
   };
 
   const yellowWindowButtonClicked = () => {
@@ -125,7 +173,8 @@ const PortfolioSite = () => {
         style={{
           width: "40px",
           height: "60px",
-          backgroundColor: colors.cream,
+          backgroundColor: isDarkMode ? colors.blueThunder : colors.cream,
+          color: isDarkMode ? colors.cream : colors.blueThunder,
           position: "absolute",
           right: "0",
           top: `${isWindowFullSize ? "10px" : "5vh"}`,
@@ -136,6 +185,7 @@ const PortfolioSite = () => {
           justifyContent: "center",
           transform: `translate(${!isWindowHidden ? "5000px" : "0"})`,
           transition: "all 0.4s ",
+          cursor: "pointer",
         }}
         onClick={() => setIsWindowHidden(false)}
       >
@@ -168,7 +218,8 @@ const PortfolioSite = () => {
         width={isWindowFullSize ? "100%" : "80%"}
         marginY={isWindowFullSize ? "10px" : "5vh"}
         marginX={isWindowFullSize ? "1vw" : "5vw"}
-        color={themeColor}
+        color={isDarkMode ? colors.cream : colors.blueThunder}
+        backgroundColor={containerBackgroundColor}
       >
         <Header>
           <Box
@@ -205,7 +256,23 @@ const PortfolioSite = () => {
             <h1 style={{ fontSize: isTablet || isDesktop ? "42px" : "22px" }}>
               Oscar Gelin
             </h1>
-            <Navbar>
+            <Navbar
+              style={{ display: "flex", gap: "40px", alignItems: "center" }}
+            >
+              {isDarkMode ? (
+                <LightMode
+                  size="20"
+                  onClick={sunClicked}
+                  color={colors.cream}
+                />
+              ) : (
+                <NightMode
+                  size="20"
+                  onClick={moonClicked}
+                  color={colors.blueThunder}
+                />
+              )}
+
               <HamburgerMenu
                 size="40"
                 color={themeColor}
@@ -214,10 +281,9 @@ const PortfolioSite = () => {
             </Navbar>
           </Box>
         </Header>
-        <Main>
+        <Main style={{ minHeight: isWindowFullSize ? "81vh" : "73vh" }}>
           {isHamburgerMenuClicked ? (
             <Navbar
-              backgroundColor={themeBackgroundColor}
               style={{
                 padding: "2px 0",
                 display: "flex",
@@ -225,17 +291,25 @@ const PortfolioSite = () => {
                 justifyContent: "center",
                 gap: "8px",
                 boxShadow: "0px 0px 4px black",
+                color: isDarkMode ? colors.cream : colors.blueThunder,
               }}
             >
-              <LinkItem showBorder={true}>Portfolio</LinkItem>
-              <LinkItem showBorder={true}> Contact</LinkItem>
+              <LinkItem showBorder={true} darkMode={isDarkMode}>
+                Portfolio
+              </LinkItem>
+              <LinkItem showBorder={true} darkMode={isDarkMode}>
+                {" "}
+                Contact
+              </LinkItem>
               <LinkItem
                 showBorder={true}
+                darkMode={isDarkMode}
                 style={{ display: "flex", alignItems: "center" }}
               >
                 Language
               </LinkItem>
               <LinkItem
+                darkMode={isDarkMode}
                 showBorder={isChangeThemeClicked ? true : false}
                 onClick={() => setIsChangeThemeClicked(!isChangeThemeClicked)}
               >
@@ -309,7 +383,48 @@ const PortfolioSite = () => {
               }}
             />
           </Box>
-
+          <Box
+            style={{
+              fontWeight: "700",
+              fontSize: "12px",
+              padding: " 0 20px",
+              margin: "10px 0 20px 0",
+            }}
+          >
+            <p style={{ color: "#fff" }}>
+              {" "}
+              <span style={{ color: colors.const }}>const </span>
+              <span style={{ color: colors.variable }}>oscar</span>{" "}
+              <span style={{ color: colors.bracket }}>:</span>
+              <span style={{ color: colors.variable }}> Person</span>{" "}
+              <span style={{ color: colors.semiColon }}>=</span>
+              <span style={{ color: colors.bracket }}> {"{"}</span>
+            </p>
+            <p style={{ marginLeft: "20px" }}>
+              <span style={{ color: colors.variable }}>name</span>{" "}
+              <span style={{ color: colors.semiColon }}>: </span>{" "}
+              <span style={{ color: colors.string }}>"Oscar" </span>{" "}
+              <span style={{ color: colors.semiColon }}>,</span>
+            </p>
+            <p style={{ marginLeft: "20px" }}>
+              <span style={{ color: colors.variable }}>education</span>
+              <span style={{ color: colors.semiColon }}>: </span>
+              <span style={{ color: colors.string }}>"Bachelors degree"</span>
+              <span style={{ color: colors.semiColon }}>,</span>
+            </p>
+            <p style={{ marginLeft: "20px" }}>
+              <span style={{ color: colors.variable }}>profession</span>
+              <span style={{ color: colors.semiColon }}>: </span>
+              <span style={{ color: colors.string }}>
+                "Front end developer"
+              </span>
+              <span style={{ color: colors.semiColon }}>,</span>
+            </p>
+            <p>
+              <span style={{ color: colors.bracket }}>{"}"}</span>
+              <span style={{ color: colors.semiColon }}>;</span>
+            </p>
+          </Box>
           <Box
             style={{
               display: "flex",
@@ -368,14 +483,65 @@ const PortfolioSite = () => {
               ) : null}
             </Box>
           </Box>
-          <Box>
-            <Card size="m" color={themeColor} backgroundColor={colors.cream}>
-              <h4>Portfolio</h4>
-              <Typescript color="blue" size={30} />
-            </Card>
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
+            <h2>Skillset</h2>
+          </Box>
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "8px",
+              marginTop: "8px",
+            }}
+          >
+            <TypescriptIcon
+              size={22.5}
+              color={colors.typescriptColor}
+              style={{ borderRadius: "2px" }}
+            />
+            <JavaScriptIcon size={30} color={colors.javascriptColor} />
+            <ReactIcon size={30} color={colors.reactColor} />
+            <HtmlIcon size={30} color={colors.htmlColor} />
+            <CssIcon size={30} color={colors.cssColor} />
+            <GitIcon size={30} color={colors.gitColor} />
           </Box>
         </Main>
-        <Footer>Footer</Footer>
+        <Footer style={{ display: "flex", justifyContent: "space-between" }}>
+          <Box
+            style={{
+              display: "flex",
+              padding: "10px",
+              flexDirection: "column",
+              justifyContent: "center",
+              height: "100%",
+              gap: "10px",
+            }}
+          >
+            <h5>oscargelin@gmail.com</h5>
+            <h5>0709487147</h5>
+          </Box>
+          <Box
+            style={{
+              display: "flex",
+              gap: "20px",
+              paddingRight: "10px",
+              alignItems: "center",
+            }}
+          >
+            <GithubIcon
+              size={30}
+              color={isDarkMode ? colors.cream : colors.blueThunder}
+            />
+            <LinkedinIcon size={30} color={colors.linkedinColor} />
+          </Box>
+        </Footer>
       </Container>
     </Wrapper>
   );
